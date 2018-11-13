@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}EMZ壁纸{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <button type="button" class="btn btn-primary" onclick="javascript:window.location.reload()">下一张</button>
+</div>
+<div class='row'>
+	<a href='{{ url }}' target='__blank'><img src='{{ url}}?height=540&width=960'></a>
+</div>
+{% endblock %}
+
