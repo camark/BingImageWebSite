@@ -23,5 +23,9 @@ def page_not_found(e):
 def server_internal_error(e):
     return render_template('500'),500
 
+@app.route('/rosnode')
+def node_index():
+    return render_template('nodelist.html')
+
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=5000)
