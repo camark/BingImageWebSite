@@ -14,21 +14,12 @@
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<h2 class="page-header">节点列表</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-		<thead>
-                <tr>
-                  <th>节点名称</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-		{% for node in nodes %}
-		<tr>
-		<td>{{ node[1:] }}</td><td><a href='rosnode/{{node[1:]|escape}}'>查看</a></td>	
-		</tr>
+	<h2 class="page-header">详细信息:i{{nodename}}</h2>
+        <pre>
+		{% for d in detail %}
+			{{ d }}
 		{% endfor %}
-	</table>
+	</pre>
       </div>
     </div>
 </div>

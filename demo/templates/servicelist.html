@@ -7,25 +7,25 @@
     <div class="row">
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-          <li class="active"><a href="#">Node <span class="sr-only">(current)</span></a></li>
-          <li><a href="/rosservice">Service</a></li>
+          <li><a href="/rosnode">Node</a></li>
+	  <li class="active"><a href="/rosservice">Service</a></li>
           <li><a href="/rostopic">Topic</a></li>
           <li><a href="#">Other</a></li>
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<h2 class="page-header">节点列表</h2>
+	<h2 class="page-header">服务列表</h2>
           <div class="table-responsive">
             <table class="table table-striped">
 		<thead>
                 <tr>
-                  <th>节点名称</th>
+                  <th>名称</th>
                   <th>操作</th>
                 </tr>
               </thead>
 		{% for node in nodes %}
 		<tr>
-		<td>{{ node[1:] }}</td><td><a href='rosnode/{{node[1:]|escape}}'>查看</a></td>	
+		<td>{{ node }}</td><td><a href="/rosservice/{{ node|replace("/","%2F") }}">View</td>	
 		</tr>
 		{% endfor %}
 	</table>
