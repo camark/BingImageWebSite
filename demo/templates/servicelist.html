@@ -25,7 +25,7 @@
               </thead>
 		{% for node in nodes %}
 		<tr>
-		<td>{{ node }}</td><td><a href="/rosservice/{{ node|replace("/","%2F") }}">View</td>	
+		<td>{{ node }}</td><td><a href="/rosservicedetail?servicename={{ node }}">View</td>
 		</tr>
 		{% endfor %}
 	</table>

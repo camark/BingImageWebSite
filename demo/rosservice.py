@@ -6,5 +6,5 @@ class RosService(BaseOp):
 	return self.list_op('rosservice list')
 
     def detail(self,servicename):
-        servicename=servicename.replace('%2F','/')
-        return self.list_op('rosservice info /'+servicename)
+        #servicename=servicename.replace('%2F','/')
+        return self.list_op('rosservice info '+servicename)

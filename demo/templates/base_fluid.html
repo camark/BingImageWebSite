@@ -1,0 +1,48 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}EMZ壁纸{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">EMZ壁纸</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>  
+                <li><a href="/rosnode">ROS</a></li>
+            <ul class="nav navbar-nav navbar-right">                
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li><a href="/rosnode">Node</a></li>
+            <li><a href="/rosservice">Service</a></li>
+            <li><a href="/rostopic">Topic</a></li>
+            <li><a href="#">Other</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        {% block page_content %}{% endblock %}
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from randombing import RandomBingimage
 from rosnode import RosNode
@@ -44,10 +44,11 @@ def service_index():
     (status,list)=rosnode.list()
     return render_template('servicelist.html',nodes=list)
 
-@app.route('/rosservice/<servicename>')
-def service_detail(servicename):
-    rosService=rosService()
-    (status,serviceDetail)=rosService.getDetail(servicename)
+@app.route('/rosservicedetail')
+def service_detail():
+    servicename=request.args.get('servicename')
+    rosService=RosService()
+    (status,serviceDetail)=rosService.detail(servicename)
     return render_template('service_detail.html',detail=serviceDetail,servicename=servicename)
 
 @app.route('/rostopic')
@@ -55,6 +56,13 @@ def topic_index():
     rosnode=RosTopic()
     (status,list)=rosnode.list()
     return render_template('topiclist.html',nodes=list)
+
+@app.route('/rostopicdetail')
+def topic_detail():
+    topic_name = request.args.get('topicname')
+    rostopic=RosTopic()
+    (status,topicDetail) = rostopic.detail(topic_name)
+    return render_template('topic_detail.html',detail=topicDetail,topicname=topic_name)
 
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)
