@@ -1,0 +1,14 @@
+{% extends "base_fluid.html" %}
+
+{% block title %}ROS WebUI{% endblock %}
+
+{% block page_content %}
+
+	<h2 class="page-header">详细信息:{{paramname}}</h2>
+    <pre>
+		{% for d in detail %}
+			{{ d }}
+		{% endfor %}
+	</pre>
+
+{% endblock %}

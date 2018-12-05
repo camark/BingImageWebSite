@@ -4,6 +4,7 @@ from randombing import RandomBingimage
 from rosnode import RosNode
 from rosservice import RosService
 from rostopic import RosTopic
+from rosparam import RosParam
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -63,6 +64,19 @@ def topic_detail():
     rostopic=RosTopic()
     (status,topicDetail) = rostopic.detail(topic_name)
     return render_template('topic_detail.html',detail=topicDetail,topicname=topic_name)
+
+@app.route('/rosparam')
+def param_index():
+    rosParam=RosParam()
+    (status, list) = rosParam.list()
+    return render_template('param_list.html', nodes=list)
+
+# @app.route('/rosparamdetail')
+# def param_detail():
+#     param_name = request.args.get('paramname')
+#     rosParam = RosParam()
+#     (status,paramDetail)=rosParam.detail(param_name)
+#     return render_template('param_detail.html',detail=paramDetail,paramname=param_name)
 
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)

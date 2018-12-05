@@ -1,0 +1,24 @@
+{% extends "base_fluid.html" %}
+
+{% block title %}ROS WebUI{% endblock %}
+
+{% block page_content %}
+
+    <h2 class="page-header">参数列表</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+        <thead>
+                <tr>
+                  <th>名称</th>
+                  <!-- <th>操作</th>-->
+                </tr>
+              </thead>
+        {% for node in nodes %}
+        <tr>
+        <td>{{ node }}</td><!--<td><a href='rosparamdetail?paramname={{node}}'>查看</a></td>-->
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
