@@ -1,0 +1,42 @@
+{% extends "base_fluid.html" %}
+
+{% block title %}ROS WebUI{% endblock %}
+
+{% block page_content %}
+
+	<h2 class="page-header">软件包列表</h2>
+    <h3 class="page-header">用户包</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+        <thead>
+                <tr>
+                  <th>名称</th>
+                  <th>路径</th>
+                </tr>
+        </thead>
+        {% for node in homenodes %}
+        <tr>
+        <td>{{ node.package_name }}</td><td> {{ node.package_path }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+    <h3 class="page-header">系统包</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+        <thead>
+                <tr>
+                  <th>名称</th>
+                  <th>路径</th>
+                </tr>
+        </thead>
+        {% for node in sysnodes %}
+        <tr>
+        <td>{{ node.package_name }}</td><td> {{ node.package_path }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

@@ -5,6 +5,8 @@ from rosnode import RosNode
 from rosservice import RosService
 from rostopic import RosTopic
 from rosparam import RosParam
+from rospack import RosPackage
+from rospack_item import RosPackageItem
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -70,6 +72,24 @@ def param_index():
     rosParam=RosParam()
     (status, list) = rosParam.list()
     return render_template('param_list.html', nodes=list)
+
+@app.route('/rospack')
+def pack_list():
+    rospackage=RosPackage()
+    (status,list) = rospackage.list()
+
+    homenode=[]
+    sysnode=[]
+
+    for item in list:
+        package_item=RosPackageItem(package_str=item)
+
+        if package_item.isHome():
+            homenode.append(package_item)
+        else:
+            sysnode.append(package_item)
+
+    return render_template('pack_list.html',homenodes=homenode,sysnodes=sysnode)
 
 # @app.route('/rosparamdetail')
 # def param_detail():
